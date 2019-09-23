@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+● We don’t expect you to spend more than 2-3 hours on this challenge
+● If you don’t have time to fully complete the challenge, please still send it in and
+indicate what your next steps would be. Remember to try to solve the hardest
+problems first.
+● Use any language and frameworks you want
+● KISS - Keep it Simple Stupid.
+● User interface design is not the main focus of the problem
+● Put your code on a public source repository (such as GitHub) and give us the URL
+● Please submit your commit history, we are interested to see how you approach the
+challenge and how you verify the validity of your solution.
+● We should be able to run your code without any crazy steps
+● Secret tip: Make use of the sample data ;)
+Problem: Martian Robots
 
-In the project directory, you can run:
 
-### `npm start`
+The Problem
+The surface of Mars can be modelled by a rectangular grid around which robots are able to
+move according to instructions provided from Earth. You are to write a program that
+determines each sequence of robot positions and reports the final position of the robot.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A robot position consists of a grid coordinate (a pair of integers: x-coordinate followed by
+y-coordinate) and an orientation (N, S, E, W for north, south, east, and west).
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+A robot instruction is a string of the letters “L”, “R”, and “F” which represent, respectively, the
+instructions:
 
-### `npm test`
+● Left : the robot turns left 90 degrees and remains on the current grid point.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+● Right : the robot turns right 90 degrees and remains on the current grid point.
 
-### `npm run build`
+● Forward : the robot moves forward one grid point in the direction of the current
+orientation and maintains the same orientation.
+The direction North corresponds to the direction from grid point (x, y) to grid point (x, y+1).
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+There is also a possibility that additional command types may be required in the future and
+provision should be made for this.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Since the grid is rectangular and bounded (...yes Mars is a strange planet), a robot that
+moves “off” an edge of the grid is lost forever. However, lost robots leave a robot “scent” that
+prohibits future robots from dropping off the world at the same grid point. The scent is left at
+the last grid position the robot occupied before disappearing over the edge. An instruction to
+move “off” the world from a grid point from which a robot has been previously lost is simply
+ignored by the current robot.
 
-### `npm run eject`
+The Input
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The first line of input is the upper-right coordinates of the rectangular world, the lower-left
+coordinates are assumed to be 0, 0.
+The remaining input consists of a sequence of robot positions and instructions (two lines per
+robot). A position consists of two integers specifying the initial coordinates of the robot and
+an orientation (N, S, E, W), all separated by whitespace on one line. A robot instruction is a
+string of the letters “L”, “R”, and “F” on one line.
+Each robot is processed sequentially, i.e., finishes executing the robot instructions before the
+next robot begins execution.
+The maximum value for any coordinate is 50.
+All instruction strings will be less than 100 characters in length.
+The Output
+For each robot position/instruction in the input, the output should indicate the final grid
+position and orientation of the robot. If a robot falls off the edge of the grid the word “LOST”

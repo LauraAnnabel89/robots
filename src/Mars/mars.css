@@ -1,0 +1,19 @@
+.Mars {
+
+}
+
+.Mars__grid {
+  height: 450px;
+  width: 600px;
+  display: grid;
+  list-style-type: none;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, minmax(200px, auto));
+  position: relative;
+}
+.Mars__gridSquare {
+  border: 1px solid darkred;
+}
+h1 {
+  position: absolute;
+}
